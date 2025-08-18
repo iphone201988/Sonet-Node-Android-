@@ -1,0 +1,59 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/consMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/notification_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom Notification Title"
+        android:visibility="gone"
+        android:textSize="@dimen/_14sdp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/notification_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is a custom notification message"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/black" />
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_gravity="end"-->
+<!--        android:layout_marginEnd="@dimen/_10sdp"-->
+<!--        android:layout_marginTop="@dimen/_3sdp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/yes"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Yes"-->
+<!--            android:layout_marginEnd="@dimen/_10sdp"-->
+<!--            android:padding="@dimen/_5sdp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/_10ssp"-->
+<!--            android:gravity="center" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/no"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="No"-->
+<!--            android:layout_marginStart="@dimen/_5sdp"-->
+<!--            android:padding="@dimen/_5sdp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/_10ssp"-->
+<!--            android:gravity="center" />-->
+<!--    </LinearLayout>-->
+
+</LinearLayout>

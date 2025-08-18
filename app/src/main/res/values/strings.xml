@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Sonet</string>
+
+    <string name="session_expired">session_expired</string>
+    <string name="alert">Alert</string>
+    <string name="post_detail">Post Detail</string>
+    <string name="please_try_again">Please try again</string>
+    <string name="plz_wait">Plz wait</string>
+    <string name="error_found">Error Found</string>
+    <string name="API_KEY">AIzaSyBWHTSMwTtcIpSc9WQIFjUxyy-V0qGLu_4</string>
+    <string name="app_width">App Width</string>
+    <string name="enter_the_verification_code_we_just_sent_on_your_email_address">Enter the verification code we just sent on your email address.</string>
+    <string name="liked">Liked</string>
+    <string name="level_choice">Level choice</string>
+    <string name="category_choice">Category choice</string>
+    <string name="description">Description</string>
+    <string name="messenger_id">Messenger ID</string>
+    <string name="my_social_media_id">My Social Media ID</string>
+    <string name="lets_s_find_what_you_are_looking_for">Lets’s find what you are looking for!</string>
+    <string name="explore_nearby_singles_click_on_the_map_to_discover_more_profiles_in_an_enlarged_view">Explore Nearby Singles: Click on the map to discover more profiles in an enlarged view.</string>
+    <string name="map_of_singles_nearby">Map of Singles Nearby</string>
+    <string name="discover_online_members_nearby_click_on_the_map_to_see_more_proeiles">Discover Online Members Nearby: Click on the map to see more profiles</string>
+    <string name="likes_sent">Likes Sent</string>
+    <string name="likes_received">Likes Received</string>
+    <string name="ghost_mode_stay_hiddenm_stay_connected">Hidden Mode - Stay Hidden \nStay Connected</string>
+    <string name="paid_version">Paid version</string>
+    <string name="_1">$1</string>
+    <string name="month">/month</string>
+    <string name="features">Features</string>
+    <string name="enable_ghost_mode_and_browse_freely_while_staying_invisible_when_your_online_status_is_turned_off_you_won_t_be_seen_by_others_but_you_can_still_see_them_enjoy_privacy_without_missing_out_subscribe_now_and_take_control_of_your_visibility">Enable Hidden Mode and browse freely while staying invisible. When
+your Online Status is turned Off (in the Profile page), others won’t see you, but
+
+you can still see them! Enjoy privacy without missing out.\n\nSubscribe now and take control of your visibility!</string>
+    <string name="restore">Restore</string>
+    <string name="update">Update</string>
+    <string name="all">All</string>
+    <string name="filter_by">Filter by:</string>
+    <string name="map">Map</string>
+    <string name="list">List</string>
+    <string name="setting">Setting</string>
+    <string name="location">Location</string>
+    <string name="push_notifications">Push Notifications</string>
+    <string name="terms_and_condition">Terms and Condition</string>
+    <string name="report_a_problem">Report a Problem</string>
+    <string name="contact_general">Contact General</string>
+    <string name="logout">Logout</string>
+    <string name="write_about_your_opinion_to_share">Write about your opinion to share</string>
+    <string name="share">Share</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="_0_150">0/150</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="here_should_be_description_about_this_title_maybe_2_lines">Here should be description about this title maybe 2 lines</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="be_part_of_community">Be part of community</string>
+    <string name="sign_up">Sign up</string>
+    <string name="set_up_new_password">Set up new password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="verify_to_reset_password">Verify to reset password?</string>
+    <string name="verify">Verify</string>
+    <string name="visibility_on_off">Visibility ON/OFF</string>
+    <string name="watch_quick_tutorial">Watch Quick Tutorial</string>
+    <string name="removing_profile_s_will_erase_their_history_including_likes_matches_and_not_matched_statuses_from_the_database_these_users_will_be_able_to_like_you_again_in_the_future_are_you_sure_you_want_to_proceed">Removing profile(s) will erase their history, including Likes, Matches, and Not Matched statuses, from the database. These users will be able to Like you again in the future. Are you sure you want to proceed?.</string>
+    <string name="my_messenger_id">My Messenger ID</string>
+    <string name="looking_for">Looking For</string>
+    <string name="optional_preferred_messenger_id">Optional: Preferred Messenger ID</string>
+    <string name="welcome_to_your_personal_hub_let_s_get_you_connected">Welcome to your personal hub—let’s get you connected!</string>
+    <string name="sonet_community_map">SONET Community Map</string>
+    <string name="no_online_members_nearby">No Member Profiles Nearby</string>
+    <string name="removing_profile_s_will_erase_all_history_including_likes_matches_and_not_matched_statuses_from_the_database_users_who_have_already_interacted_with_you_will_not_be_able_to_do_so_again">Removing profile(s) will erase all history, including Likes, Matches, and Not Matched statuses, from the database. Users who have already interacted with you will not be able to do so again</string>
+    <string name="forgot">Forgot password ?</string>
+
+</resources>

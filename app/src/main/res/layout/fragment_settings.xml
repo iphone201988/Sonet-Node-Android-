@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tech.sonet.ui.settings.SettingsFragmentVM" />
+
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:fontFamily="@font/orkney_medium"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/setting"
+                android:textColor="@color/black_100"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_setting" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/btnlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:checked="true"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                app:layout_constraintBottom_toBottomOf="@id/textLocation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/textLocation"
+                app:layout_constraintVertical_bias="0.555"
+                app:thumbTint="@color/toogle_btn"
+                app:track="@drawable/switch_button_background" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLocation" />
+
+            <TextView
+                android:id="@+id/text_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/push_notifications"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textLocation" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/btnpushnotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:checked="true"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                app:layout_constraintBottom_toBottomOf="@id/text_notification"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/text_notification"
+                app:thumbTint="@color/toogle_btn"
+                app:track="@drawable/switch_button_background" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_notification" />
+
+            <TextView
+                android:id="@+id/text_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/terms_and_condition"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_notification" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_terms" />
+
+            <TextView
+                android:id="@+id/text_Report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/report_a_problem"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_terms" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_Report" />
+
+            <TextView
+                android:id="@+id/text_Contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/contact_general"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_Report" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_Contact" />
+
+
+            <TextView
+                android:id="@+id/text_tutorial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/watch_quick_tutorial"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_Contact"/>
+
+            <View
+                android:id="@+id/vieLineTutorial"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_tutorial" />
+
+            <TextView
+                android:id="@+id/text_Logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/logout"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_tutorial" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_Logout" />
+
+            <TextView
+                android:id="@+id/text_Share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_25sdp"
+                android:fontFamily="@font/orkney_light"
+                android:padding="@dimen/_2sdp"
+                android:text="@string/share"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_Logout" />
+
+            <ImageView
+                android:id="@+id/facebook_btn"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/facebook1"
+                app:layout_constraintBottom_toBottomOf="@id/text_Share"
+                app:layout_constraintStart_toEndOf="@id/text_Share"
+                app:layout_constraintTop_toTopOf="@id/text_Share" />
+
+            <ImageView
+                android:id="@+id/insta_btn"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/instagram_icon"
+                app:layout_constraintBottom_toBottomOf="@id/facebook_btn"
+                app:layout_constraintStart_toEndOf="@id/facebook_btn"
+                app:layout_constraintTop_toTopOf="@id/facebook_btn" />
+
+            <ImageView
+                android:id="@+id/pinterest_btn"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/pinterest_icon"
+                app:layout_constraintBottom_toBottomOf="@id/insta_btn"
+                app:layout_constraintStart_toEndOf="@id/insta_btn"
+                app:layout_constraintTop_toTopOf="@id/insta_btn" />
+
+
+            <EditText
+                android:id="@+id/tvOpinion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/white_bg"
+                android:fontFamily="@font/orkney_regular"
+                android:gravity="top"
+                android:hint="@string/write_about_your_opinion_to_share"
+                android:maxLength="150"
+                android:paddingStart="@dimen/_5sdp"
+                android:textColorHint="@color/brown"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_Share" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvOpinion" />
+
+            <TextView
+                android:id="@+id/textNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text="@string/_0_150"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintBottom_toBottomOf="@id/view6"
+                app:layout_constraintEnd_toEndOf="@id/tvOpinion" />
+
+            <TextView
+                android:id="@+id/text_DeleteAc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_35sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:text="@string/delete_account"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view6" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</layout>

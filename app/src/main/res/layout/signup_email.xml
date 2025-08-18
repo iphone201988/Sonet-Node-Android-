@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tech.sonet.ui.signupemail.SignupEmailVM" />
+
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/back_home"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:padding="@dimen/_4sdp"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/chevron_lef"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/email_forgot"
+            android:layout_width="@dimen/_95sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:src="@drawable/email"
+            app:layout_constraintBottom_toTopOf="@id/text_forgotemail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/text_forgotemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="We have sent an email!"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp"
+            android:fontFamily="@font/orkney_bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/verify_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:fontFamily="@font/orkney_regular"
+            android:gravity="center"
+            android:text="Please verify your email, check your spam folder, and log in to the app"
+            android:textColor="@color/black_100"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_forgotemail" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="vm"
+            type="com.tech.sonet.ui.splash.WelcomeSplashVM" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/back_home"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:padding="@dimen/_4sdp"
+            android:onClick="@{v -> vm.onClick(v)}"
+            android:src="@drawable/chevron_lef"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/Ivsonet"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:src="@drawable/color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/back_home"
+            app:layout_constraintVertical_bias="0.499" />
+
+        <TextView
+            android:id="@+id/Tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/orkney_medium"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="Currently,the number of registered singles nearby is:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Ivsonet" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/orkney_regular"
+            android:text="Text"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Tv1" />
+
+        <TextView
+            android:id="@+id/Tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/orkney_regular"
+            android:text="Text"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv2" />
+
+        <TextView
+            android:id="@+id/tv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/orkney_regular"
+            android:text="Text"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Tv3" />
+
+        <TextView
+            android:id="@+id/tv5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/orkney_regular"
+            android:text="Text"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv4" />
+
+        <TextView
+            android:id="@+id/TVnumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/title_name_background"
+            android:fontFamily="@font/orkney_medium"
+            android:padding="@dimen/_8sdp"
+            android:text="70"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv5" />
+
+        <TextView
+            android:id="@+id/Tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:fontFamily="@font/orkney_medium"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_15sdp"
+            android:text="Help us grow this community by sharing the app!"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/TVnumber" />
+
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/orkney_regular"
+            android:text="Text"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Tv_text" />
+
+        <TextView
+            android:id="@+id/text_Share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:fontFamily="@font/orkney_light"
+            android:padding="@dimen/_2sdp"
+            android:text="Share"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvText" />
+
+        <ImageView
+            android:id="@+id/facebook_btn"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/facebook1"
+            app:layout_constraintBottom_toBottomOf="@id/text_Share"
+            app:layout_constraintStart_toEndOf="@id/text_Share"
+            app:layout_constraintTop_toTopOf="@id/text_Share" />
+
+        <ImageView
+            android:id="@+id/insta_btn"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/instagram_icon"
+            app:layout_constraintBottom_toBottomOf="@id/facebook_btn"
+            app:layout_constraintStart_toEndOf="@id/facebook_btn"
+            app:layout_constraintTop_toTopOf="@id/facebook_btn" />
+
+        <ImageView
+            android:id="@+id/pinterest_btn"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@drawable/pinterest_icon"
+            app:layout_constraintBottom_toBottomOf="@id/insta_btn"
+            app:layout_constraintStart_toEndOf="@id/insta_btn"
+            app:layout_constraintTop_toTopOf="@id/insta_btn" />
+
+        <TextView
+            android:id="@+id/tvopinion"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginHorizontal="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:clickable="false"
+            android:focusable="false"
+            android:fontFamily="@font/orkney_regular"
+            android:gravity="top"
+            android:hint="Write about your opinion to share"
+            android:paddingStart="@dimen/_5sdp"
+            android:textColorHint="@color/brown"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_Share" />
+
+        <TextView
+            android:id="@+id/textNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:fontFamily="@font/orkney_regular"
+            android:text="0/150"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintBottom_toBottomOf="@id/tvopinion"
+            app:layout_constraintEnd_toEndOf="@id/tvopinion" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

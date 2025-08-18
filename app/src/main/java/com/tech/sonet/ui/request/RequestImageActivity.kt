@@ -1,0 +1,46 @@
+package com.tech.sonet.ui.request
+
+import androidx.activity.viewModels
+import com.bumptech.glide.Glide
+import com.tech.sonet.R
+import com.tech.sonet.databinding.RequestlistImageBinding
+import com.tech.sonet.ui.base.BaseActivity
+import com.tech.sonet.ui.base.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
+
+@AndroidEntryPoint
+class RequestImageActivity :BaseActivity<RequestlistImageBinding>(){
+    private val viewModel: RequestImageVM by viewModels()
+    companion object{
+        var imageLoad:String?=null
+    }
+    override fun getLayoutResource(): Int {
+        return R.layout.requestlist_image
+    }
+
+    override fun getViewModel(): BaseViewModel {
+        return viewModel
+    }
+
+    override fun onCreateView() {
+        initOnClick()
+        Glide.with(Objects.requireNonNull(this))
+            .load(imageLoad) // image url
+            .into(binding.Ivimage)
+    }
+
+    private fun initOnClick() {
+        viewModel.onClick.observe(this, androidx.lifecycle.Observer {
+            when (it?.id) {
+                R.id.back_press->{
+                    onBackPressed()
+                }
+            }
+        })
+    }
+
+
+
+
+}

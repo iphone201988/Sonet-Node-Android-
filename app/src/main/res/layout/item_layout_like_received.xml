@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bean"
+            type="com.tech.sonet.data.model.LikeReceiveApiResponse.LikeReceiveApiResponseData" />
+
+        <variable
+            name="callback"
+            type="com.tech.sonet.ui.CustomSwipeMenuAdapter.CardCallback" />
+        <variable
+            name="pos"
+            type="Integer" />
+
+
+    </data>
+
+    <com.zerobranch.layout.SwipeLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{ v -> callback.onItemClick(v,bean,pos)}"
+        app:draggedItem="@id/favConstantLayout"
+        app:isTogether="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rightItem="@id/constantSwap"
+        app:swipeDirection="left">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constantSwap"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:background="@color/white"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvdelete"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/red_background"
+                android:fontFamily="@font/orkney_regular"
+                android:gravity="center"
+                android:text="Delete"
+                android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="@id/constantSwap"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/constantSwap" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/favConstantLayout"
+            android:layout_width="match_parent"
+            android:paddingVertical="@dimen/_5sdp"
+            android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/image"
+                loadImage="@{bean.post_image}"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/unsplash_image"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{bean.title}"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/orkney_regular"
+                android:textColor="@color/black_100"
+                app:layout_constraintStart_toEndOf="@id/image"
+                app:layout_constraintTop_toTopOf="@id/image"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{bean.description}"
+                android:textSize="@dimen/_12ssp"
+                android:singleLine="true"
+                android:layout_marginEnd="@dimen/_40sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:fontFamily="@font/orkney_regular"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                app:layout_constraintTop_toBottomOf="@id/tvName"/>
+
+
+            <TextView
+                android:id="@+id/viewData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View"
+                app:layout_constraintBottom_toBottomOf="@id/image"
+                app:layout_constraintStart_toStartOf="@id/tvName"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/orkney_medium"/>
+
+            <TextView
+                android:id="@+id/tvDate"
+                changeDateFormat="@{bean.requestDate}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvName"
+                app:layout_constraintBottom_toBottomOf="@id/tvName"/>
+
+            <TextView
+                android:id="@+id/accept_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/request_accept_bg"
+                android:fontFamily="@font/orkney_medium"
+                android:gravity="center"
+                android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+                android:padding="@dimen/_4sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="Like Back"
+                android:visibility="@{bean.type == 1 || bean.type == 2 ? View.GONE : View.VISIBLE}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription"/>
+
+            <TextView
+                android:id="@+id/reject_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/request_accept_bg"
+                android:fontFamily="@font/orkney_medium"
+                android:gravity="center"
+                android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+                android:padding="@dimen/_4sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:text="Not Match"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:visibility="@{bean.type == 1 || bean.type == 2 ? View.GONE : View.VISIBLE}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintBottom_toBottomOf="@id/accept_text"
+                app:layout_constraintTop_toTopOf="@id/accept_text"
+                app:layout_constraintEnd_toStartOf="@id/accept_text"/>
+
+
+            <TextView
+                android:id="@+id/matched"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:background="@drawable/request_accept_bg"
+                android:fontFamily="@font/orkney_medium"
+                android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+                android:padding="@dimen/_4sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:text="@{bean.type == 2 ? `Not Matched` : `Matched`}"
+                android:visibility="@{bean.type == 1 || bean.type == 2 ? View.VISIBLE : View.GONE}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/uviewLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey2"
+            android:layout_gravity="bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </com.zerobranch.layout.SwipeLayout>
+
+
+</layout>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="callback"
+            type="com.tech.sonet.ui.base.BaseCustomDialog.Listener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/white_bg">
+
+        <TextView
+            android:id="@+id/tvtextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Report a problem"
+            android:textColor="@color/black_100"
+            android:textSize="@dimen/_15ssp"
+            android:fontFamily="@font/orkney_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvReporting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:gravity="center"
+            android:text="You're reporting for what reason? Please\nselect only one"
+            android:textSize="@dimen/_12ssp"
+            android:fontFamily="@font/orkney_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvtextview" />
+
+        <TextView
+            android:id="@+id/tvspam"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="center"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="It's spam"
+            android:fontFamily="@font/orkney_regular"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReporting" />
+
+        <TextView
+            android:id="@+id/tvviolation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:fontFamily="@font/orkney_regular"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="Intellectual property violation"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvspam" />
+
+        <TextView
+            android:id="@+id/tvharassment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="Bulling or harassment"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/orkney_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvviolation" />
+
+        <TextView
+            android:id="@+id/tvspeech"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:fontFamily="@font/orkney_regular"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="Hate speech or symbols"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvharassment" />
+
+        <TextView
+            android:id="@+id/tvviolence"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:fontFamily="@font/orkney_regular"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="violence or dangerous organisations"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvspeech" />
+
+        <TextView
+            android:id="@+id/tvillegal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:fontFamily="@font/orkney_regular"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="Sale of illegal or regulated goods"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvviolence" />
+
+        <TextView
+            android:id="@+id/tvscam"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="Scam or Fraud"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/orkney_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvillegal" />
+
+        <TextView
+            android:id="@+id/tvfalse_information"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="center"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="False Information"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_14ssp"
+            android:fontFamily="@font/orkney_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvscam" />
+
+        <TextView
+            android:id="@+id/tvDismiss"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginHorizontal="@dimen/_10ssp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:fontFamily="@font/orkney_medium"
+            android:gravity="center"
+            android:onClick="@{(v)->callback.onViewClick(v)}"
+            android:text="Dismiss"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvfalse_information" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.tech.sonet.data.model.GetMyCardApiResponse.GetMyCardApiResponseData" />
+
+        <variable
+            name="pos"
+            type="Integer" />
+
+        <variable
+            name="callback"
+            type="com.tech.sonet.ui.base.SimpleRecyclerViewAdapter.SimpleCallback" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/myCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/homeimage_background"
+        android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+        android:paddingVertical="@dimen/_20sdp"
+        android:paddingStart="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/looking_for">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/unsplash"
+            loadImage="@{bean.post_image}"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_130sdp"
+            android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+            android:scaleType="centerCrop"
+            android:src="@drawable/unsplash_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/orkney_bold"
+                android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+                android:text="My Profile"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp" />
+
+            <TextView
+                android:id="@+id/pcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/orkney_medium"
+                android:onClick="@{v->callback.onItemClick(v,bean,pos)}"
+                android:text="@{bean.title}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text="@{bean.description}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintTop_toBottomOf="@id/pcard" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

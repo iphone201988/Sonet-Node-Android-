@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.tech.sonet.ui.chart.ChartFragmentVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/card_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/list"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textSize="@dimen/_18ssp"
+            android:textColor="@color/black_100"
+            android:fontFamily="@font/orkney_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <TextView
+            android:id="@+id/tvFilterBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/filter_by"
+            android:textSize="@dimen/_10ssp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:textColor="@color/black_100"
+            android:fontFamily="@font/orkney_regular"
+            app:layout_constraintEnd_toStartOf="@id/selectFilter"
+            app:layout_constraintBottom_toBottomOf="@id/card_list"
+            app:layout_constraintTop_toTopOf="@id/card_list"/>
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/selectFilter"
+            android:background="@drawable/bg_edit_text"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_12sdp"
+            android:textSize="@dimen/_10ssp"
+            android:focusable="false"
+            android:maxLines="1"
+            android:includeFontPadding="false"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:text="@string/all"
+            android:layout_marginEnd="@dimen/_25sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvFilterBy"
+            app:layout_constraintBottom_toBottomOf="@id/tvFilterBy"/>
+
+        <ImageView
+            android:layout_width="@dimen/_12ssp"
+            android:layout_height="@dimen/_12ssp"
+            android:src="@drawable/iv_drop_down"
+            android:layout_marginEnd="@dimen/_3sdp"
+            app:layout_constraintEnd_toEndOf="@id/selectFilter"
+            app:layout_constraintTop_toTopOf="@id/selectFilter"
+            app:layout_constraintBottom_toBottomOf="@id/selectFilter"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/filterView"
+            android:background="@drawable/edit_back_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            android:backgroundTint="@color/white"
+            tools:itemCount="4"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:elevation="@dimen/_10sdp"
+            android:visibility="gone"
+            tools:listitem="@layout/item_layout_filter"
+            app:layout_constraintTop_toBottomOf="@id/selectFilter"
+            app:layout_constraintStart_toStartOf="@id/selectFilter"
+            app:layout_constraintEnd_toEndOf="@id/selectFilter"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_card"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/btnUpdate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.64"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_list"
+            app:layout_constraintVertical_bias="0.542"
+            tools:listitem="@layout/category_activity" />
+
+        <TextView
+            android:id="@+id/tvNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_online_members_nearby"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@drawable/gradient_background"
+            android:gravity="center"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:padding="@dimen/_7sdp"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:text="@string/update"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/orkney_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

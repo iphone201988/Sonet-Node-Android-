@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="bean"
+            type="com.tech.sonet.data.model.CardDataListApiResponse.CardDataListApiResponseData" />
+
+        <variable
+            name="vm"
+            type="com.tech.sonet.ui.chart.CardPopupVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivCross"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:padding="@dimen/_3sdp"
+            android:src="@drawable/chevron_lef"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/ivCross">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/request_image"
+                loadImage="@{bean.post_image}"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent" />
+
+            <TextView
+                android:id="@+id/title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/orkney_bold"
+                android:text="@{String.valueOf(bean.title)}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintStart_toEndOf="@id/request_image"
+                app:layout_constraintTop_toTopOf="@id/request_image" />
+
+            <TextView
+                android:id="@+id/level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="gone"
+                android:fontFamily="@font/orkney_regular"
+                android:text="Gender Identity-"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@id/request_image"
+                app:layout_constraintTop_toBottomOf="@id/title_name" />
+
+            <TextView
+                android:id="@+id/level5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="@{bean.levelDetail.level}"
+                android:fontFamily="@font/orkney_regular"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
+                app:layout_constraintStart_toEndOf="@id/request_image"
+                app:layout_constraintTop_toBottomOf="@id/level" />
+
+            <TextView
+                android:id="@+id/l5ft"
+                setDistanceToFeet="@{String.valueOf(bean.total_distance)}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/orkney_bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintBottom_toBottomOf="@id/request_image"
+                app:layout_constraintStart_toEndOf="@id/request_image"
+                app:layout_constraintTop_toBottomOf="@id/level5" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text="@string/description"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="@id/request_image"
+                app:layout_constraintTop_toBottomOf="@id/request_image" />
+
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text="@{String.valueOf(bean.description)}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/description"
+                app:layout_constraintTop_toBottomOf="@id/description" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+            <TextView
+                android:id="@+id/category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text="@string/looking_for"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_description" />
+
+            <View
+                android:id="@+id/category_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/category_nm" />
+
+            <TextView
+                android:id="@+id/category_nm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:gravity="center|start"
+                android:text="@{bean.categoryDetail.category_name}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintEnd_toStartOf="@+id/ivImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/category" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivImage"
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                loadImage="@{bean.categoryDetail.category_image}"
+                app:layout_constraintTop_toTopOf="@+id/category_nm"
+                app:layout_constraintBottom_toBottomOf="@+id/category_nm"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text="@string/my_messenger_id"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/category_nm" />
+
+            <TextView
+                android:id="@+id/phone_nm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text='@{bean.mobile == null? "N/A":bean.mobile}'
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+            <View
+                android:id="@+id/phone_view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@color/grey2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phone_nm" />
+
+            <TextView
+                android:id="@+id/social"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text="@string/my_social_media_id"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/phone_nm" />
+
+            <TextView
+                android:id="@+id/link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/orkney_regular"
+                android:text='@{bean.social_media == null? "N/A" : bean.social_media }'
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/social" />
+
+            <View
+                android:id="@+id/linkview"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:background="@color/grey2"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/link" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMain"
+            loadCons="@{bean.type}"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_38sdp"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:background="@drawable/gradient_background"
+            app:layout_constraintTop_toBottomOf="@id/cl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/request"
+                loadRequest="@{bean.type}"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_38sdp"
+                android:fontFamily="@font/orkney_medium"
+                android:gravity="center"
+                android:onClick="@{(v)->vm.onClick(v)}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintStart_toStartOf="@id/clMain"
+                app:layout_constraintEnd_toEndOf="@id/clMain"
+                app:layout_constraintTop_toTopOf="@id/heartImage"
+                app:layout_constraintBottom_toBottomOf="@id/heartImage"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/heartImage"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:src="@drawable/like_icon"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintEnd_toStartOf="@id/request"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linear"-->
+
+<!--            android:layout_width="@dimen/_150sdp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="@dimen/_20sdp"-->
+<!--            android:layout_marginBottom="@dimen/_10sdp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/cl">-->
+
+<!--            &lt;!&ndash;            <TextView&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:id="@+id/screenshot"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_width="0dp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_marginHorizontal="@dimen/_5sdp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:layout_weight="2"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:background="@drawable/gradient_stroke"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:fontFamily="@font/orkney_medium"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:gravity="center"&ndash;&gt;-->
+<!--            &lt;!&ndash;               android:visibility="gone"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:onClick="@{(v)->vm.onClick(v)}"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:padding="@dimen/_7sdp"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:text="Take screenshot"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:textColor="@color/blue"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:textSize="@dimen/_15ssp" />&ndash;&gt;-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/request"-->
+<!--                loadRequest="@{bean.type}"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:paddingStart="@dimen/_10sdp"-->
+<!--                android:paddingEnd="@dimen/_25sdp"-->
+<!--                android:background="@drawable/gradient_background"-->
+<!--                android:drawableStart="@drawable/like"-->
+<!--                android:fontFamily="@font/orkney_medium"-->
+<!--                android:gravity="center"-->
+<!--                android:text="Like"-->
+<!--                android:onClick="@{(v)->vm.onClick(v)}"-->
+<!--                android:padding="@dimen/_7sdp"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="@dimen/_15ssp" />-->
+
+<!--        </LinearLayout>-->
+
+        <TextView
+            android:id="@+id/screenshot1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_40sdp"
+            android:layout_weight="2"
+            android:background="@drawable/gradient_stroke"
+            android:fontFamily="@font/orkney_medium"
+            android:gravity="center"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:padding="@dimen/_7sdp"
+            android:text="Take screenshot"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_15ssp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
