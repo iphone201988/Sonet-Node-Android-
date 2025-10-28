@@ -2,6 +2,7 @@ package com.tech.sonet.ui.like_sent
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,6 +31,12 @@ class LikeSentDetailActivity : BaseActivity<ActivityLikeSentDetailBinding>() {
     }
 
     override fun onCreateView() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         val bundle = intent.extras
         if (bundle != null) {
             val data = bundle.getParcelable<LikeSentApiResponse.LikeSentApiResponseData>("data")

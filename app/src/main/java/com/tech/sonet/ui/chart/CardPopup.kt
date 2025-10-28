@@ -65,11 +65,15 @@ class CardPopup : BaseActivity<CardPopupBinding>() {
         if(mapData != null){
             binding.bean = mapData
             cardid = mapData._id
-            str= data?.post_image.toString()
+
+            Log.i("fdsfsdf", "onStart: ${data?.post_image}")
+            str= mapData?.post_image.toString()
 
         }else{
             binding.bean = data
             cardid = data?._id ?: ""
+            Log.i("fdsfsdf", "onStart: ${data?.post_image}")
+
             str= data?.post_image.toString()
         }
     }
@@ -129,6 +133,10 @@ class CardPopup : BaseActivity<CardPopupBinding>() {
                 Status.ERROR ->{
                     hideLoading()
                     showToast(it.message.toString())
+                }
+
+                else ->{
+
                 }
 
             }

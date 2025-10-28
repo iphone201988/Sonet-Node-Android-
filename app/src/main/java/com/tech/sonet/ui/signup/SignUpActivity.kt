@@ -1,8 +1,14 @@
 package com.tech.sonet.ui.signup
 
 import android.content.Intent
+import android.graphics.Rect
 import android.util.Log
+import android.view.WindowManager
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
@@ -32,6 +38,17 @@ class SignUpActivity : BaseActivity<ActivitySignupBinding>() {
     }
 
     override fun onCreateView() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.innerCl)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
+
+
+
+
         initOnClick()
         initView()
         initObserver()

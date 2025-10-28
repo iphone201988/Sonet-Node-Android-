@@ -61,7 +61,7 @@ you can still see them! Enjoy privacy without missing out.\n\nSubscribe now and 
     <string name="verify">Verify</string>
     <string name="visibility_on_off">Visibility ON/OFF</string>
     <string name="watch_quick_tutorial">Watch Quick Tutorial</string>
-    <string name="removing_profile_s_will_erase_their_history_including_likes_matches_and_not_matched_statuses_from_the_database_these_users_will_be_able_to_like_you_again_in_the_future_are_you_sure_you_want_to_proceed">Removing profile(s) will erase their history, including Likes, Matches, and Not Matched statuses, from the database. These users will be able to Like you again in the future. Are you sure you want to proceed?.</string>
+    <string name="removing_profile_s_will_erase_their_history_including_likes_matches_and_not_matched_statuses_from_the_database_these_users_will_be_able_to_like_you_again_in_the_future_are_you_sure_you_want_to_proceed">Interactions are final. If there’s no match, the user won’t appear in List or 0Map views. Continue?.</string>
     <string name="my_messenger_id">My Messenger ID</string>
     <string name="looking_for">Looking For</string>
     <string name="optional_preferred_messenger_id">Optional: Preferred Messenger ID</string>
@@ -70,5 +70,7 @@ you can still see them! Enjoy privacy without missing out.\n\nSubscribe now and 
     <string name="no_online_members_nearby">No Member Profiles Nearby</string>
     <string name="removing_profile_s_will_erase_all_history_including_likes_matches_and_not_matched_statuses_from_the_database_users_who_have_already_interacted_with_you_will_not_be_able_to_do_so_again">Removing profile(s) will erase all history, including Likes, Matches, and Not Matched statuses, from the database. Users who have already interacted with you will not be able to do so again</string>
     <string name="forgot">Forgot password ?</string>
+    <string name="walk_up_and_say_hi_to_singles_nearby">Walk Up and \nSay ‘Hi’ to \nSingles Nearby</string>
+    <string name="no_matches_at_the_moment">No matches at the moment</string>
 
 </resources>

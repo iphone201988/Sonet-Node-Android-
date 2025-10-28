@@ -4,28 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="vm"
             type="com.tech.sonet.ui.homepage.HomePageVM" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-
+        <!-- Background Image -->
         <ImageView
             android:id="@+id/homeimage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_60sdp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
             android:src="@drawable/homebackgrond"
-            app:layout_constraintBottom_toTopOf="@id/linear"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/logintext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- Small Top Icon -->
         <ImageView
             android:id="@+id/ImageS"
             android:layout_width="@dimen/_70sdp"
@@ -36,57 +38,60 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Business Text -->
         <TextView
             android:id="@+id/tetbusiness"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:text="Get your \nbusiness \nonline"
+            android:text="@string/walk_up_and_say_hi_to_singles_nearby"
             android:textColor="@color/brown"
-            android:textSize="@dimen/_35ssp"
+            android:textSize="@dimen/_32ssp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ImageS" />
 
-        <LinearLayout
-            android:id="@+id/linear"
-            android:layout_width="match_parent"
+        <!-- Login Button -->
+        <TextView
+            android:id="@+id/logintext"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:background="@drawable/gradient_stroke"
+            android:fontFamily="@font/orkney_regular"
+            android:gravity="center"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:padding="@dimen/_7sdp"
+            android:text="Login"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/registertext"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            <TextView
-                android:id="@+id/logintext"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_5sdp"
-                android:background="@drawable/gradient_stroke"
-                android:fontFamily="@font/orkney_regular"
-                android:gravity="center"
-                android:onClick="@{(v)->vm.onClick(v)}"
-                android:padding="@dimen/_7sdp"
-                android:text="Login"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/_15ssp" />
+        <!-- Register Button -->
+        <TextView
+            android:id="@+id/registertext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/gradient_background"
+            android:fontFamily="@font/orkney_regular"
+            android:gravity="center"
+            android:onClick="@{(v)->vm.onClick(v)}"
+            android:padding="@dimen/_7sdp"
+            android:text="Register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintStart_toEndOf="@id/logintext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            <TextView
-                android:id="@+id/registertext"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_marginHorizontal="@dimen/_5sdp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/gradient_background"
-                android:fontFamily="@font/orkney_regular"
-                android:gravity="center"
-                android:onClick="@{(v)->vm.onClick(v)}"
-                android:padding="@dimen/_7sdp"
-                android:text="Register"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_15ssp" />
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

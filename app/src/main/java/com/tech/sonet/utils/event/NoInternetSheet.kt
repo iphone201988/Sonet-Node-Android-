@@ -39,18 +39,27 @@ class NoInternetSheet : BottomSheetDialogFragment() {
     }
 
     private fun setupFullHeight(bottomSheetDialog: BottomSheetDialog) {
-        val bottomSheet =
-            bottomSheetDialog.findViewById<View>(R.id.design_bottom_sheet) as FrameLayout?
-        val behavior: BottomSheetBehavior<*> = BottomSheetBehavior.from<FrameLayout?>(bottomSheet!!)
-        val layoutParams = bottomSheet.layoutParams
-        val windowHeight: Int = getWindowHeight()
-        if (layoutParams != null) {
-            layoutParams.height = windowHeight
+        bottomSheetDialog.setOnShowListener { dialog ->
+            val sheetDialog = dialog as BottomSheetDialog
+            val bottomSheet =
+                sheetDialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
+
+            bottomSheet?.let { sheet ->
+                val behavior = BottomSheetBehavior.from(sheet)
+                val layoutParams = sheet.layoutParams
+                val windowHeight = getWindowHeight()
+
+                layoutParams?.let {
+                    it.height = windowHeight
+                    sheet.layoutParams = it
+                }
+
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+                behavior.isDraggable = false // disable dragging
+            }
         }
-        bottomSheet.layoutParams = layoutParams
-        behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        behavior.isDraggable = false // disable dragging
     }
+
 
     private fun getWindowHeight(): Int {
         val displayMetrics = DisplayMetrics()

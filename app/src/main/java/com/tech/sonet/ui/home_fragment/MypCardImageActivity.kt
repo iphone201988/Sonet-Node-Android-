@@ -34,8 +34,8 @@ class MypCardImageActivity: BaseActivity<MypcardImageBinding>() {
     private fun initOnClick() {
         viewModel.onClick.observe(this, androidx.lifecycle.Observer {
             when (it?.id) {
-                R.id.Ivback->{
-                    onBackPressed()
+                R.id.ivBack->{
+                    onBackPressedDispatcher.onBackPressed()
                 }
             }
         })

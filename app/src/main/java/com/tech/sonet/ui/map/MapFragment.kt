@@ -1,6 +1,7 @@
 package com.tech.sonet.ui.map
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
@@ -36,7 +37,6 @@ import com.tech.sonet.BR
 import com.tech.sonet.R
 import com.tech.sonet.data.model.CardDataListApiResponse
 import com.tech.sonet.data.model.GetCategoryApiResponse
-import com.tech.sonet.data.model.response.CardData
 import com.tech.sonet.databinding.FragmentMapBinding
 import com.tech.sonet.databinding.ItemLayoutFilterBinding
 import com.tech.sonet.ui.base.BaseFragment
@@ -48,7 +48,6 @@ import com.tech.sonet.utils.Constant
 import com.tech.sonet.utils.ImageBindingUtil
 import com.tech.sonet.utils.Status
 import com.tech.sonet.utils.showErrorToast
-import com.tech.sonet.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -64,6 +63,8 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback,
     private val LOCATION_PERMISSION = 45
     private var latitude : Double = 0.0
     private var longitude : Double = 0.0
+
+    var filterData : String ? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
     var lastZoomLevel = 0f
@@ -97,12 +98,14 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback,
             when(v.id){
                 R.id.consFilter ->{
                     val data = HashMap<String, Any>()
+                    filterData = m._id.toString()
                     data["id"] = m._id.toString()
                     data["location"] = mapOf(
                         "type" to "Point", "coordinates" to listOf(
                             WelcomeActivity.long.toDouble(), WelcomeActivity.lat.toDouble()
                         )
                     )
+                    data["type"] = true
                     Log.i("dasdas", "getMyCard: $data")
                     viewModel.getCards(data, Constant.CARD_LIST)
                     binding.filterView.visibility = View.GONE
@@ -135,6 +138,8 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback,
                             longitude , latitude
                         )
                     )
+                    data["type"] = true
+
                     Log.i("dasdas", "getMyCard: $data")
                     viewModel.getCards(data, Constant.CARD_LIST)
                 }
@@ -310,17 +315,133 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback,
 
     }
 
+//    private fun getCard() {
+//        val data = HashMap<String, Any>()
+//        data["location"] = mapOf(
+//            "type" to "Point", "coordinates" to listOf(
+//                WelcomeActivity.long.toDouble(), WelcomeActivity.lat.toDouble()
+//            )
+//        )
+//        data["type"] = true
+//
+//        Log.i("dasdas", "getMyCard: $data")
+//        viewModel.getCards(data, Constant.CARD_LIST)
+//
+//    }
+
+
+//    @SuppressLint("MissingPermission")
+//    private fun getCard() {
+//        val data = HashMap<String, Any>()
+//
+//        val lat = WelcomeActivity.lat.toDoubleOrNull() ?: 0.0
+//        val lng = WelcomeActivity.long.toDoubleOrNull() ?: 0.0
+//
+//        if (lat == 0.0 || lng == 0.0) {
+//            val fusedLocationClient =
+//                LocationServices.getFusedLocationProviderClient(requireContext())
+//
+//            fusedLocationClient.lastLocation
+//                .addOnSuccessListener { location ->
+//                    if (location != null) {
+//                        // ✅ Update stored values
+//                        WelcomeActivity.lat = location.latitude.toString()
+//                        WelcomeActivity.long = location.longitude.toString()
+//
+//                        data["location"] = mapOf(
+//                            "type" to "Point",
+//                            "coordinates" to listOf(location.longitude, location.latitude)
+//                        )
+//                        if (filterData != null){
+//                            data["id"] = filterData.toString()
+//                        }
+//                    } else {
+//                        // fallback
+//                        data["location"] = mapOf(
+//                            "type" to "Point",
+//                            "coordinates" to listOf(0.0, 0.0)
+//                        )
+//                        if (filterData != null){
+//                            data["id"] = filterData.toString()
+//                        }
+//                    }
+//
+//                    data["type"] = true
+//                    //viewModel.getCards(data, Constant.CARD_LIST)
+//                }
+//                .addOnFailureListener {
+//                    data["location"] = mapOf(
+//                        "type" to "Point",
+//                        "coordinates" to listOf(0.0, 0.0)
+//                    )
+//                    if (filterData != null){
+//                        data["id"] = filterData.toString()
+//                    }
+//                    data["type"] = true
+//                  //  viewModel.getCards(data, Constant.CARD_LIST)
+//                }
+//
+//        } else {
+//            // ✅ Already valid
+//            data["location"] = mapOf(
+//                "type" to "Point",
+//                "coordinates" to listOf(lng, lat)
+//            )
+//            data["type"] = true
+//            if (filterData != null){
+//                data["id"] = filterData.toString()
+//            }
+//            viewModel.getCards(data, Constant.CARD_LIST)
+//        }
+//    }
+
+
+    @SuppressLint("MissingPermission")
     private fun getCard() {
         val data = HashMap<String, Any>()
-        data["location"] = mapOf(
-            "type" to "Point", "coordinates" to listOf(
-                WelcomeActivity.long.toDouble(), WelcomeActivity.lat.toDouble()
-            )
-        )
-        Log.i("dasdas", "getMyCard: $data")
-        viewModel.getCards(data, Constant.CARD_LIST)
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
+        fusedLocationClient.lastLocation
+            .addOnSuccessListener { location ->
+                val lat = location?.latitude ?: 0.0
+                val lng = location?.longitude ?: 0.0
+
+                WelcomeActivity.lat = location.latitude.toString()
+                WelcomeActivity.long = location.longitude.toString()
+
+                data["location"] = mapOf(
+                    "type" to "Point",
+                    "coordinates" to listOf(lng, lat)
+                )
+
+                if (filterData != null) {
+                    data["id"] = filterData.toString()
+                }
+
+                data["type"] = true
+
+                Log.i("getCard", "Using location: lat=$lat, lng=$lng")
+                viewModel.getCards(data, Constant.CARD_LIST)
+            }
+            .addOnFailureListener { e ->
+                Log.e("getCard", "Failed to get location: ${e.message}")
+
+                // fallback to 0.0, 0.0 if something goes wrong
+                data["location"] = mapOf(
+                    "type" to "Point",
+                    "coordinates" to listOf(0.0, 0.0)
+                )
+
+                if (filterData != null) {
+                    data["id"] = filterData.toString()
+                }
+
+                data["type"] = true
+             //   viewModel.getCards(data, Constant.CARD_LIST)
+            }
     }
+
+
 
     private fun initCurrentLocation() {
         locationCallback = object : LocationCallback() {
@@ -398,16 +519,40 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback,
             if (list?.size!! > 0) {
                 for (i in list?.indices!!) {
                     if (markerTag.equals(list!![i]._id.toString())) {
-                        if (list!![i].notAccessible == true) {
-//                            Toast.makeText(context, "Out of range", Toast.LENGTH_SHORT).show()
+
+                        val coordinates = list!![i].location?.coordinates
+                        if (coordinates != null && coordinates.size == 2) {
+                            val markerLat = coordinates[1]
+                            val markerLng = coordinates[0]
+
+                            isWithin100Meters(requireContext(), markerLat, markerLng) { isClose ->
+                                if (isClose) {
+                                    // ✅ Within range → open popup
+                                    val bundle = Bundle().apply {
+                                        putParcelable("mapDAta", list!![i])
+                                    }
+                                    val intent = Intent(context, CardPopup::class.java)
+                                    intent.putExtras(bundle)
+                                    startActivity(intent, bundle)
+                                } else {
+
+                                }
+                            }
+                        } else {
+                            Log.w("MARKER_CLICK", "Invalid coordinates for marker: $markerTag")
+
                         }
-                        else{
-                            val bundle: Bundle = Bundle()
-                            bundle.putParcelable("mapDAta", list!![i])
-                            val intent = Intent(context, CardPopup::class.java)
-                            intent.putExtras(bundle)
-                            startActivity(intent, bundle)
-                        }
+
+//                        if (list!![i].notAccessible == true) {
+////                            Toast.makeText(context, "Out of range", Toast.LENGTH_SHORT).show()
+//                        }
+//                        else{
+//                            val bundle: Bundle = Bundle()
+//                            bundle.putParcelable("mapDAta", list!![i])
+//                            val intent = Intent(context, CardPopup::class.java)
+//                            intent.putExtras(bundle)
+//                            startActivity(intent, bundle)
+//                        }
 
                     }
                 }
@@ -425,10 +570,74 @@ class MapFragment : BaseFragment<FragmentMapBinding>(), OnMapReadyCallback,
 
 
 
+
         }
 
 
     }
+
+
+    @SuppressLint("MissingPermission")
+    private fun isWithin100Meters(
+        context: Context,
+        lat: Double?,
+        lng: Double?,
+        onResult: (Boolean) -> Unit
+    ) {
+        try {
+            // 1️⃣ Validate coordinates first
+            if (lat == null || lng == null) {
+                Log.w("DISTANCE_CHECK", "Marker coordinates are null.")
+                onResult(false)
+                return
+            }
+
+            // 2️⃣ Prepare location client
+            val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+
+            // 3️⃣ Check runtime permissions
+            val finePerm = ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
+            val coarsePerm = ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION)
+
+            if (finePerm != PackageManager.PERMISSION_GRANTED && coarsePerm != PackageManager.PERMISSION_GRANTED) {
+                Log.w("DISTANCE_CHECK", "Location permission not granted.")
+                onResult(false)
+                return
+            }
+
+            // 4️⃣ Safely get last known location
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location ->
+                    if (location == null) {
+                        Log.w("DISTANCE_CHECK", "Location is null (GPS off or unavailable).")
+                        onResult(false)
+                        return@addOnSuccessListener
+                    }
+
+                    val markerLocation = Location("").apply {
+                        latitude = lat
+                        longitude = lng
+                    }
+
+                    Log.d("DISTANCE_CHECK", "location $location")
+                    val distance = location.distanceTo(markerLocation)
+                    Log.d("DISTANCE_CHECK", "Distance: $distance meters")
+
+                    onResult(distance <= 100)
+                }
+                .addOnFailureListener { e ->
+                    Log.e("DISTANCE_CHECK", "Failed to get location: ${e.message}")
+                    onResult(false)
+                }
+
+        } catch (e: Exception) {
+            Log.e("DISTANCE_CHECK", "Unexpected error: ${e.message}", e)
+            onResult(false)
+        }
+    }
+
+
+
 
     private fun loadBitmapFromUrl(
         context: Context, imageUrl: String, callback: (Bitmap) -> Unit

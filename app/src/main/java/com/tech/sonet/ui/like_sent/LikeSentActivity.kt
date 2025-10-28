@@ -5,7 +5,10 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -49,6 +52,12 @@ class LikeSentActivity : BaseActivity<ActivityLikeSentBinding>() , BaseCustomDia
     }
 
     override fun onCreateView() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         initPopup()
         initOnClick()
         val data = HashMap<String,Any>()
@@ -137,7 +146,7 @@ class LikeSentActivity : BaseActivity<ActivityLikeSentBinding>() , BaseCustomDia
                             val myDataModel : SimpleApiResponse ? = ImageBindingUtil.parseJson(it.data.toString())
                             if (myDataModel != null)
                             {
-                                    showToast("Delete post successfully")
+                                    showToast("Profile removed successfully.")
                                     dialogDelete.dismiss()
                                     val data = HashMap<String,Any>()
                                     data["type"] = "sender"
@@ -151,7 +160,7 @@ class LikeSentActivity : BaseActivity<ActivityLikeSentBinding>() , BaseCustomDia
                             if (myDataModel != null)
                             {
                                 clearAllPopup.dismiss()
-                                showToast("Delete posts successfully")
+                                showToast("Profile removed successfully.")
                                 val data = HashMap<String,Any>()
                                 data["type"] = "sender"
                                 viewModel.likeSentData(data,Constant.LIKE_SENT)
@@ -160,6 +169,9 @@ class LikeSentActivity : BaseActivity<ActivityLikeSentBinding>() , BaseCustomDia
 
                         }
                     }
+
+                }
+                else ->{
 
                 }
             }

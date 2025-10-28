@@ -1,5 +1,6 @@
 package com.tech.sonet.ui.chart
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.location.LocationServices
 import com.tech.sonet.BR
 import com.tech.sonet.R
 import com.tech.sonet.data.model.CardDataListApiResponse
@@ -39,6 +41,8 @@ class ChartFragment : BaseFragment<FragmentChartBinding>() {
     private lateinit var filterAdapter : SimpleRecyclerViewAdapter<GetCategoryApiResponse.GetCategoryApiResponseData, ItemLayoutFilterBinding>
     private var pagination: VerticalPagination? = null
     var page = 1
+
+    var filterData : String ? = null
     var isLoading = 1
 
     override fun getLayoutResource(): Int {
@@ -193,23 +197,89 @@ class ChartFragment : BaseFragment<FragmentChartBinding>() {
         )
     }
 
+//    private fun initList() {
+//        val data = HashMap<String, Any>()
+//        data["location"] = mapOf(
+//            "type" to "Point", "coordinates" to listOf(
+//                WelcomeActivity.long.toDouble(), WelcomeActivity.lat.toDouble()
+//            )
+//        )
+//        if (filterData != null){
+//            data["id"] = filterData.toString()
+//        }
+//
+//
+//        val queryData = HashMap<String,Any>()
+//        queryData["limit"] =10
+//        queryData["page"]  = 1
+//        Log.i("dasdas", "getMyCard: $data")
+//
+//        viewModel.getCards(queryData,data, Constant.CARD_LIST)
+//
+//    }
+
+
+    @SuppressLint("MissingPermission")
     private fun initList() {
         val data = HashMap<String, Any>()
-        data["location"] = mapOf(
-            "type" to "Point", "coordinates" to listOf(
-                WelcomeActivity.long.toDouble(), WelcomeActivity.lat.toDouble()
-            )
+        val queryData: HashMap<String, Any> = hashMapOf(
+            "limit" to 10,
+            "page" to 1
         )
 
+        val fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
-        val queryData = HashMap<String,Any>()
-        queryData["limit"] =10
-        queryData["page"]  = 1
-        Log.i("dasdas", "getMyCard: $data")
+        try {
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location ->
+                    val lat = location?.latitude ?: 0.0
+                    val lng = location?.longitude ?: 0.0
 
-        viewModel.getCards(queryData,data, Constant.CARD_LIST)
+                    data["location"] = mapOf(
+                        "type" to "Point",
+                        "coordinates" to listOf(lng, lat)
+                    )
 
+                    if (filterData != null) {
+                        data["id"] = filterData.toString()
+                    }
+
+                    Log.i("initList", "Using current location: $lat,$lng")
+                    viewModel.getCards(queryData, data, Constant.CARD_LIST)
+                }
+                .addOnFailureListener { e ->
+                    Log.e("initList", "Failed to get location: ${e.message}")
+
+                    data["location"] = mapOf(
+                        "type" to "Point",
+                        "coordinates" to listOf(0.0, 0.0)
+                    )
+                    if (filterData != null) {
+                        data["id"] = filterData.toString()
+                    }
+
+                    Log.i("initList", "Fallback to 0,0 location")
+               //     viewModel.getCards(queryData, data, Constant.CARD_LIST)
+                }
+
+        } catch (e: Exception) {
+            Log.e("initList", "Unexpected error: ${e.message}")
+
+            data["location"] = mapOf(
+                "type" to "Point",
+                "coordinates" to listOf(0.0, 0.0)
+            )
+            if (filterData != null) {
+                data["id"] = filterData.toString()
+            }
+
+         //   viewModel.getCards(queryData, data, Constant.CARD_LIST)
+        }
     }
+
+
+
+
 
     private fun initAdapter() {
         chartAdapter = SimpleRecyclerViewAdapter(
@@ -248,6 +318,9 @@ class ChartFragment : BaseFragment<FragmentChartBinding>() {
                             WelcomeActivity.long.toDouble(), WelcomeActivity.lat.toDouble()
                         )
                     )
+                    if (filterData != null){
+                        data["id"] = filterData.toString()
+                    }
                     val queryData = HashMap<String,Any>()
                     queryData["limit"] = 10
                     queryData["page"]  = page
@@ -270,6 +343,7 @@ class ChartFragment : BaseFragment<FragmentChartBinding>() {
             when(v.id){
                 R.id.consFilter ->{
                     val data = HashMap<String, Any>()
+                    filterData = m._id
                     data["id"] = m._id.toString()
                     data["location"] = mapOf(
                         "type" to "Point", "coordinates" to listOf(

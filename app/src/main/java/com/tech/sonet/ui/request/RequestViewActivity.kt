@@ -12,7 +12,10 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import com.tech.sonet.R
 import com.tech.sonet.data.model.LikeReceiveApiResponse
@@ -39,6 +42,12 @@ class RequestViewActivity : BaseActivity<RequestPopupActivityBinding>() {
     }
 
     override fun onCreateView() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         val bundle = intent.extras
         if (bundle != null) {
             val data = bundle.getParcelable<LikeReceiveApiResponse.LikeReceiveApiResponseData>("data")

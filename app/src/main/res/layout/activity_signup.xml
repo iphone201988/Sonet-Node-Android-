@@ -9,10 +9,12 @@
             type="com.tech.sonet.ui.signup.SignUpViewModel" />
     </data>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
         android:paddingBottom="@dimen/_20sdp">
 
 
@@ -20,7 +22,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/innerCl"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/back_arrow1"
@@ -65,7 +67,8 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/orkney_regular"
                     android:gravity="center"
-                    android:text="@string/here_should_be_description_about_this_title_maybe_2_lines"
+                    android:text="Chat with Nearby Singles:
+Come over and say 'Hi' when they're nearby!"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +87,8 @@
                     android:paddingStart="@dimen/_12sdp"
                     android:singleLine="true"
                     android:textSize="@dimen/_12ssp"
+
+                    android:nextFocusForward="@id/etEmail"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textvw" />
@@ -99,6 +104,7 @@
                     android:hint="Email"
                     android:paddingStart="@dimen/_12sdp"
                     android:singleLine="true"
+                    android:nextFocusForward="@id/etMessangerId"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +123,9 @@
                     android:inputType="text"
                     android:paddingStart="@dimen/_12sdp"
                     android:singleLine="true"
+
+                    android:nextFocusForward="@id/etPassword"
+                    android:imeOptions="actionNext"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintTop_toBottomOf="@id/etEmail"
                     app:layout_constraintStart_toStartOf="@id/etEmail"
@@ -133,6 +142,7 @@
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:paddingStart="@dimen/_12sdp"
+                    android:nextFocusForward="@id/etCfPassword"
                     android:singleLine="true"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -149,6 +159,7 @@
                     android:fontFamily="@font/orkney_regular"
                     android:hint="Repeat Password"
                     android:inputType="textPassword"
+                    android:imeOptions="actionDone"
                     android:paddingStart="@dimen/_12sdp"
                     android:singleLine="true"
                     android:textSize="@dimen/_12ssp"
@@ -195,5 +206,5 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </layout>

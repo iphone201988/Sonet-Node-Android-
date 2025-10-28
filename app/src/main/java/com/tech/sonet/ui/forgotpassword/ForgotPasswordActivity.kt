@@ -4,7 +4,10 @@ import android.content.Intent
 import android.text.TextUtils
 import android.util.Log
 import android.util.Patterns
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import com.tech.sonet.R
 import com.tech.sonet.data.model.ForgotPasswordApiResponse
@@ -32,6 +35,12 @@ class ForgotPasswordActivity : BaseActivity<ActivityForgotpasswordBinding>() {
     }
 
     override fun onCreateView() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         initOnClick()
         initView()
         initObserver()

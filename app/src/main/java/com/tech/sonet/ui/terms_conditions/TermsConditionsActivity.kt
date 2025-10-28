@@ -6,6 +6,7 @@ import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -35,6 +36,12 @@ class TermsConditionsActivity : BaseActivity<ActivityTermsConditionsBinding>() {
 
     override fun onCreateView() {
       initOnClick()
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         binding.webView.loadUrl("https://sonet-singles-nearby.com/terms-and-conditions")
         binding.webView.webViewClient = WebViewClient()
         binding.webView.webChromeClient = object : WebChromeClient() {

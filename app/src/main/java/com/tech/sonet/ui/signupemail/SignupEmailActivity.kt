@@ -1,7 +1,10 @@
 package com.tech.sonet.ui.signupemail
 
 import android.content.Intent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.tech.sonet.R
 import com.tech.sonet.databinding.SignupEmailBinding
 import com.tech.sonet.ui.base.BaseActivity
@@ -23,6 +26,13 @@ class SignupEmailActivity : BaseActivity<SignupEmailBinding>() {
     }
 
     override fun onCreateView() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
         initOnClick()
     }
 

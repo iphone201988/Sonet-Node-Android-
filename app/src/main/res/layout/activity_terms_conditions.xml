@@ -17,6 +17,8 @@
         android:layout_height="match_parent"
         tools:context=".ui.terms_conditions.TermsConditionsActivity">
 
+        
+
 
         <ImageView
             android:id="@+id/ivCross"
@@ -59,7 +61,7 @@
             android:textColor="@color/white"
             android:background="@drawable/gradient_background"
             android:onClick="@{(v)->vm.onClick(v)}"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_25sdp"
             android:layout_marginHorizontal="@dimen/_20sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

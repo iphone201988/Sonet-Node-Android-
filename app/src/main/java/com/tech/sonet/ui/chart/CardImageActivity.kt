@@ -1,6 +1,10 @@
 package com.tech.sonet.ui.chart
 
+import android.util.Log
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
 import com.tech.sonet.R
 import com.tech.sonet.databinding.CardlistImageBinding
@@ -24,6 +28,14 @@ class CardImageActivity:BaseActivity<CardlistImageBinding>() {
         return viewModel
     }
     override fun onCreateView() {
+        Log.i("dsfdsfdsfds", "onCreateView: $imageLoad")
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
         initOnClick()
         Glide.with(Objects.requireNonNull(this))
             .load(imageLoad) // image url

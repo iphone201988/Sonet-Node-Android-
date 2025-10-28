@@ -50,7 +50,7 @@
             android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_20sdp"
             android:paddingStart="@dimen/_5sdp"
-            android:paddingEnd="@dimen/_12sdp"
+            android:paddingEnd="@dimen/_15sdp"
             android:textSize="@dimen/_10ssp"
             android:focusable="false"
             android:maxLines="1"

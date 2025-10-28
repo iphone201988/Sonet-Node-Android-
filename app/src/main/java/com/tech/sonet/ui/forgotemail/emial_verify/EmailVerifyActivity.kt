@@ -2,6 +2,7 @@ package com.tech.sonet.ui.forgotemail.emial_verify
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -39,6 +40,12 @@ class EmailVerifyActivity : BaseActivity<ActivityEmailVerifyBinding>() {
        }
 
     override fun onCreateView() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         getData()
         initOnClick()
         setOberver()
@@ -91,6 +98,9 @@ class EmailVerifyActivity : BaseActivity<ActivityEmailVerifyBinding>() {
          when(it?.id){
              R.id.verifyAccount ->{
                   verifyOtp()
+             }
+             R.id.Imageback->{
+                 onBackPressedDispatcher.onBackPressed()
              }
          }
      })

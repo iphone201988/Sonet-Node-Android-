@@ -11,8 +11,11 @@ import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -71,6 +74,14 @@ class MypCardActivity : BaseActivity<MypcardBinding>() {
     }
 
     override fun onCreateView() {
+
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
 
         val bundle = intent.extras
         if (bundle != null) {
@@ -315,8 +326,10 @@ class MypCardActivity : BaseActivity<MypcardBinding>() {
     }
 
     private fun getImage() {
-        ImagePicker.with(this).crop().start()
+        ImagePicker.with(this)
+            .start()
     }
+
 
     private var imageUri: Uri? = null
     var imageMultipart: MultipartBody.Part? = null

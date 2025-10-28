@@ -6,8 +6,11 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tech.sonet.R
@@ -58,6 +61,12 @@ class RequestActivity : BaseActivity<RequestActivityBinding>(), BaseCustomDialog
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView() {
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         initPopup()
         getRequestList()
         initObserver()
@@ -167,7 +176,7 @@ class RequestActivity : BaseActivity<RequestActivityBinding>(), BaseCustomDialog
                             val myDataModel : SimpleApiResponse? = ImageBindingUtil.parseJson(it.data.toString())
                             if (myDataModel != null)
                             {
-                                    showToast("Delete post successfully")
+                                    showToast("Profile removed successfully.")
                                     dialogDelete.dismiss()
                                     val data = HashMap<String,Any>()
                                     data["type"] = "receiver"
@@ -181,7 +190,7 @@ class RequestActivity : BaseActivity<RequestActivityBinding>(), BaseCustomDialog
                             if (myDataModel != null)
                             {
                                 clearAllPopup.dismiss()
-                                showToast("Delete posts successfully")
+                                showToast("Profile removed successfully.")
                                 val data = HashMap<String,Any>()
                                 data["type"] = "receiver"
                                 viewModel.getRequestList(data,Constant.LIKE_SENT)

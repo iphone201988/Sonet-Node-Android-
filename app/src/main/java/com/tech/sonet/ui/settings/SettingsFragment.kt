@@ -353,6 +353,10 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(), BaseCustomDial
                     hideLoading()
                     showToast(it.message.toString())
                 }
+
+                else -> {
+
+                }
             }
         })
 
@@ -373,6 +377,9 @@ class SettingsFragment : BaseFragment<FragmentSettingsBinding>(), BaseCustomDial
                 Status.ERROR -> {
                     hideLoading()
                     showToast(it.message.toString())
+                }
+                else ->{
+
                 }
             }
         }
